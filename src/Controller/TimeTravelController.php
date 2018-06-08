@@ -15,6 +15,9 @@ class TimeTravelController extends AbstractController
      */
     public function index()
     {
+        if(empty($_POST['startDate']) || empty($_POST['endDate'])) {
+            return $this->twig->render('index.html.twig', ['errorTravelInfo' => 'Veuillez remplir tous les champs :)']);
+        }
         $startDate = new DateTime($_POST['startDate']);
         $endDate = new DateTime($_POST['endDate']);
         $timeTravel = new TimeTravel($startDate);
@@ -31,6 +34,6 @@ class TimeTravelController extends AbstractController
         $interval = new DateInterval('PT' . $_POST['interval'] . 'S');
         $timeTravel = new TimeTravel($startDate);
         $date = $timeTravel->findDate($interval, $_POST['timeWay']);
-        return $this->twig->render('Travel/findDate.html.twig', ['date' => $date->format('Y-m-d H:i:s')]);
+        return $this->twig->render('Travel/findDate.html.twig', ['date' => $date->format('d/m/Y à H:i')]);
     }
 }

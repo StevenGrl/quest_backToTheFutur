@@ -38,6 +38,11 @@ class TimeTravel
         return $this->start->add($interval);
     }
 
+    public function backToFutureStepByStep($step)
+    {
+
+    }
+
     /**
      * @return DateTime
      */

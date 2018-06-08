@@ -14,6 +14,11 @@
     <div class="shadow my-5">
         <h1 class="text-center mt-5">Back to the futur</h1>
         <h2 class="text-center mt-5 mb-3">Voyage d'une date à une autre !</h2>
+        {% if errorTravelInfo is defined %}
+            <div class="alert alert-danger text-center">
+                {{ errorTravelInfo }}
+            </div>
+        {% endif %}
         <form action="/travel" method="post">
             <div class="row justify-content-center">
                 <div class="offset-2 col-4">
@@ -32,7 +37,7 @@
                 </div>
                 <div class="form-group col-12 text-center">
                     <a href="/error/404" class="btn btn-danger col-2">Voyager Surprise 1 :)</a>
-                    <input type="submit" class="btn btn-primary col-1 offset-1" value="Voyager ?">
+                    <input type="submit" class="btn btn-primary col-2 offset-1" value="Calculer le voyage :)">
                     <a href="/error/405" class="btn btn-danger col-2 offset-1">Voyager Surprise 2 :D</a>
                 </div>
             </div>
@@ -69,6 +74,63 @@
                 </div>
                 <div class="form-group col-4 text-center">
                     <input type="submit" class="btn btn-primary" value="Trouver la date">
+                </div>
+            </div>
+        </form>
+        <h2 class="text-center mt-5 mb-3">Voyage step by step ! :)</h2>
+        {% if errorStepByStep is defined %}
+            <div class="alert alert-danger text-center">
+                {{ errorStepByStep }}
+            </div>
+        {% endif %}
+        <form action="/travel/step" method="post">
+            <div class="row justify-content-center">
+                <div class="offset-1 col-4">
+                    <div class="form-group form-inline">
+                        <label for="startDate">Date de départ : &nbsp
+                            <input class="flatpickr" type="text" name="startDate">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group form-inline">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="nbMonth">nb mois</label>
+                            </div>
+                            <select class="custom-select" id="nbMonths" name="nbMonth">
+                                <option selected value="0">0</option>
+                                {% for i in 1..12 %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="input-group mb-3 ml-1">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="nbWeeks">nb weeks</label>
+                            </div>
+                            <select class="custom-select" id="nbWeeks" name="nbWeeks">
+                                <option selected value="0">0</option>
+                                {% for i in 1..4 %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="input-group mb-3 ml-1">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="nbDays">nb jours</label>
+                            </div>
+                            <select class="custom-select" id="nbDays" name="nbDays">
+                                <option selected value="0">0</option>
+                                {% for i in 1..31 %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-4 text-center">
+                    <input type="submit" class="btn btn-primary" value="Trouver les dates">
                 </div>
             </div>
         </form>
