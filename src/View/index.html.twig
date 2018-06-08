@@ -1,0 +1,76 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+{% endblock %}
+
+{% block javascript %}
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
+    <script src="/assets/js/flatpickr.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="shadow my-5">
+        <h1 class="text-center mt-5">Back to the futur</h1>
+        <h2 class="text-center mt-5 mb-3">Voyage d'une date à une autre !</h2>
+        <form action="/travel" method="post">
+            <div class="row justify-content-center">
+                <div class="offset-2 col-4">
+                    <div class="form-group form-inline">
+                        <label for="startDate">Date de départ : &nbsp
+                            <input class="flatpickr" type="text" name="startDate">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group form-inline">
+                        <label for="endDate">Date de d'arrivée : &nbsp
+                            <input class="flatpickr" type="text" name="endDate">
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group col-12 text-center">
+                    <a href="/error/404" class="btn btn-danger col-2">Voyager Surprise 1 :)</a>
+                    <input type="submit" class="btn btn-primary col-1 offset-1" value="Voyager ?">
+                    <a href="/error/405" class="btn btn-danger col-2 offset-1">Voyager Surprise 2 :D</a>
+                </div>
+            </div>
+        </form>
+        <h2 class="text-center mt-5 mb-3">Voyage avec interval !</h2>
+        {% if errorFindDate is defined %}
+            <div class="alert alert-danger text-center">
+                {{ errorFindDate }}
+            </div>
+        {% endif %}
+        <form action="/travel/findDate" method="post">
+            <div class="row justify-content-center">
+                <div class="offset-2 col-4">
+                    <div class="form-group form-inline">
+                        <label for="startDate">Date de départ : &nbsp
+                            <input class="flatpickr" type="text" name="startDate">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group form-inline">
+                        <label for="interval">Interval : &nbsp
+                            <input class="form-control" type="text" name="interval">
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group text-center col-12">
+                    <label class="radio-inline">
+                        <input type="radio" name="timeWay" id="past" value="past" checked> Past
+                    </label> |
+                    <label class="radio-inline">
+                        Futur <input type="radio" name="timeWay" id="futur" value="futur">
+                    </label>
+                </div>
+                <div class="form-group col-4 text-center">
+                    <input type="submit" class="btn btn-primary" value="Trouver la date">
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
