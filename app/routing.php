@@ -17,5 +17,6 @@ $routes = [
     'TimeTravel' => [
         ['index', '/travel', 'POST'],
         ['findDate', '/travel/findDate', 'POST'],
+        ['findStep', '/travel/step', 'POST'],
     ]
 ];

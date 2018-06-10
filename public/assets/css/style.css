@@ -1,3 +1,16 @@
+body {
+    background-image: url("/assets/images/back-to-the-future-delorean.jpg");
+}
+
+.shadow {
+    background-color: white;
+    opacity: 0.93;
+}
+
 span.red {
     color: red;
+}
+
+li {
+    list-style-type: none;
 }

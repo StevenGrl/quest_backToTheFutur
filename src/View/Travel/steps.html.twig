@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="text-center shadow my-5">
+        <h1>Il faut vous rendre à chacune de ces dates pour retourner à votre époque !</h1>
+        <div class="offset-3 col-6">
+            <table class="table table-hover table-striped table-bordered">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for date in steps %}
+                        <tr>
+                            <th>{{ loop.index }}</th>
+                            <td>{{ date|date('d/m/Y') }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <a href="/" class="btn btn-primary mb-3">Home</a>
+    </div>
+{% endblock %}

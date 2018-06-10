@@ -2,6 +2,8 @@
 
 namespace BackToTheFutur\Model;
 
+use DateInterval;
+use DatePeriod;
 use DateTime;
 
 class TimeTravel
@@ -38,9 +40,9 @@ class TimeTravel
         return $this->start->add($interval);
     }
 
-    public function backToFutureStepByStep($step)
+    public function backToFutureStepByStep(DateTime $endDate, DateInterval $step)
     {
-
+        return new DatePeriod($this->start, $step, $endDate);
     }
 
     /**
