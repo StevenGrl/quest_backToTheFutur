@@ -1,5 +1,14 @@
+@font-face {
+    font-family: BackToTheFutur;
+    src: url('/assets/font/BTTF.ttf');
+}
+
 body {
-    background-image: url("/assets/images/back-to-the-future-delorean.jpg");
+    background: url("/assets/images/back-to-the-future-delorean.jpg") no-repeat center fixed;
+}
+
+h1, h2, h3 {
+    font-family: BackToTheFutur;
 }
 
 .shadow {
